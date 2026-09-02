@@ -50,8 +50,9 @@ re_path(r'^archive/(?P<year>[0-9]{4})/(?P<month>[0-9]{2})/(?P<day>[0-9]{2})$',vi
 #template for test.html
 path('test_template/', views.test_template),
 
+#template for menu.html
+path('menu_template/', views.fooddata),
 
-    
 ]
 
 # template for menu.html

@@ -6,7 +6,12 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Welcome to the Test Page</h1> 
-    <p>Hello, {{ name }}!</p>
+    <h1>My Menu</h1>
+    <ul>
+        {% for item in newmenu %}
+            <li>{{ item.name }} - ${{ item.price }}</li>
+        {% endfor %}
+    </ul>
+    
 </body>
 </html>

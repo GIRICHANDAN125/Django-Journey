@@ -298,4 +298,17 @@ def error(request):
 
 
 def test_template(request):
-    return render(request, 'test.html')
+    data = {'name': "sai"}
+    return render(request, 'test.html', data)
+
+
+def fooddata(request):
+    newmenu=[
+        {"name":"pizza", "price":200},
+        {"name":"burger", "price":150},
+        {"name":"pasta", "price":250},
+        {"name":"salad", "price":100},
+        {"name":"sushi", "price":300},
+
+    ]
+    return render(request, 'menu.html', {'newmenu': newmenu})
