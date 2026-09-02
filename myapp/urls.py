@@ -43,4 +43,7 @@ re_path(r'^archive/(?P<year>[0-9]{4})/(?P<month>[0-9]{2})/(?P<day>[0-9]{2})$',vi
         r'^menu/(?P<category>[a-zA-Z0-9 ]+)(?:/(?P<subcategory>[a-zA-Z0-9 ]+))?/$',
         views.menu
     ),
+
+
+    
 ]
