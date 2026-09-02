@@ -291,3 +291,11 @@ def menu(request, category, subcategory=None):
         f"<h1>You have chosen category: {category}</h1>"
         f"<h1>You have chosen subcategory: Not specified</h1>"
     )
+
+
+def error(request):
+    return HttpResponse("<h1 style='color:red;'>Error Page</h1>")
+
+
+def test_template(request):
+    return render(request, 'test.html')

@@ -26,3 +26,5 @@ urlpatterns = [
 
 
 handler404 = 'myproject.views.handler404'
+
+
