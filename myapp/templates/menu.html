@@ -7,11 +7,22 @@
 </head>
 <body>
     <h1>My Menu</h1>
-    <ul>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
         {% for item in newmenu %}
-            <li>{{ item.name }} - ${{ item.price }}</li>
+            <tr{% if item.price == 0 %} style="background-color: lightgreen;"{% endif %}>
+                <td>{{ item.name }}</td>
+                <td>${{ item.price }}</td>
+            </tr>
         {% endfor %}
-    </ul>
+        </tbody>
+    </table>
     
 </body>
 </html>

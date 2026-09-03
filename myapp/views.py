@@ -302,13 +302,16 @@ def test_template(request):
     return render(request, 'test.html', data)
 
 
-def fooddata(request):
-    newmenu=[
-        {"name":"pizza", "price":200},
-        {"name":"burger", "price":150},
-        {"name":"pasta", "price":250},
-        {"name":"salad", "price":100},
-        {"name":"sushi", "price":300},
-
+def create_food_list():
+    return [
+        {"name": "Pizza", "price": 200},
+        {"name": "Burger", "price": 150},
+        {"name": "Pasta", "price": 250},
+        {"name": "Salad", "price": 100},
+        {"name": "Sushi", "price": 0},
     ]
-    return render(request, 'menu.html', {'newmenu': newmenu})
+
+
+def fooddata(request):
+    return render(request, 'menu.html', {'newmenu': create_food_list()})
+        
