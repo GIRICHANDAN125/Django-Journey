@@ -1,0 +1,8 @@
+{% for item in menu %}
+{% if item.name == item_name %}
+<p>{{ item.name }} - ${{ item.price }}</p>
+
+{% elif forloop.last %}
+<p style="background-color: red;">Item is not available.</p>
+{% endif %}
+{% endfor %}

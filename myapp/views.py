@@ -313,5 +313,23 @@ def create_food_list():
 
 
 def fooddata(request):
-    return render(request, 'menu.html', {'newmenu': create_food_list()})
-        
+    return render(request, 'menu.html', {'newmenu': 'items', 'food_list': create_food_list()})
+
+
+def menu1(request, item_name):
+    menu = create_food_list()
+    return render(request, 'menu1.html', {'menu': menu, 'item_name': item_name})
+
+
+
+def menu(request, category, subcategory=None):
+    if subcategory:
+        return HttpResponse(
+            f"<h1>You have chosen category: {category}</h1>"
+            f"<h1>You have chosen subcategory: {subcategory}</h1>"
+        )
+    return HttpResponse(
+        f"<h1>You have chosen category: {category}</h1>"
+        f"<h1>You have chosen subcategory: Not specified</h1>"
+    )
+    
