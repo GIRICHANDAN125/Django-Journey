@@ -56,6 +56,10 @@ path('menu_template/', views.fooddata),
 #template for menu1.html
 path('menu1/<str:item_name>/', views.menu1),
 
+path('testimg/', views.testimg),
+
+path('products/', views.productlist),
+
 
 
 

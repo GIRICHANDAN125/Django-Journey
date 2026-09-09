@@ -333,3 +333,20 @@ def menu(request, category, subcategory=None):
         f"<h1>You have chosen subcategory: Not specified</h1>"
     )
     
+
+def testimg(request):
+    return render(request, 'testimg.html')
+
+
+
+
+def productlist(request):
+    products = [
+        {"name":"smartphone","brand": "Apple", "price": 20000, "image": "smartphone.jpg"},
+        {"name":"laptop","brand": "Dell", "price": 50000, "image": "laptop.jpg"},
+        {"name":"headphones","brand": "Sony", "price": 3000, "image": "headphones.jpg"},
+        {"name":"camera","brand": "Canon", "price": 40000, "image": "camera.jpg"},
+        {"name":"smartwatch","brand": "Samsung", "price": 10000, "image": "smartwatch.jpg"},
+    ]
+    return render(request, 'productlist.html', {'products': products})
+      
