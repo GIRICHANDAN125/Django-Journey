@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Product Details</title>
+</head>
+
+<body>
+
+    {% if item_details %}
+
+        <h1>Product Details</h1>
+
+        <img src="{% static item_details.image %}"
+             alt="{{ item_details.name }}"
+             width="200"
+             height="200">
+
+        <h2>Name: {{ item_details.name }}</h2>
+
+        <h3>Brand: {{ item_details.brand }}</h3>
+
+        <h3>Price: ₹{{ item_details.price }}</h3>
+
+    {% else %}
+
+        <h2>Product not found</h2>
+
+    {% endif %}
+
+</body>
+
+</html>

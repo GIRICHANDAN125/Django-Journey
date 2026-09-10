@@ -59,13 +59,13 @@ path('menu1/<str:item_name>/', views.menu1),
 path('testimg/', views.testimg),
 
 path('products/', views.productlist),
+path('shoppinglist/', views.shoppinglist, name='shoppinglist'),
 
-path('shoppinglist/', views.shoppinglist),
-
-
-
-
-
+path(
+    'shoppingdetails/<str:shoppingitem>/',
+    views.shoppinglist1,
+    name='shoppingdetails'
+),
 
 ]
 

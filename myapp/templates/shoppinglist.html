@@ -11,7 +11,7 @@
 
     {% for item in shopping_list %}
 
-        <a href="#">{{ item.name }}</a>
+        <a href="{% url 'shoppingdetails' item.name %}">{{ item.name }}</a>
         <br>
 
     {% endfor %}
