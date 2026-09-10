@@ -374,3 +374,17 @@ def productlist(request):
     ]
 
     return render(request, 'productlist.html', {'products': products})
+
+
+
+
+
+def shoppinglist(request):
+    shopping = [
+        {"name": "smartphone", "brand": "Apple", "price": 20000, "image": "smartphone.jpg"},
+        {"name": "laptop", "brand": "Dell", "price": 50000, "image": "laptopimage.jpg"},
+        {"name": "headphones", "brand": "Sony", "price": 3000, "image": "eye.jpg"},
+        {"name": "camera", "brand": "Canon", "price": 40000, "image": "cam.jpg"},
+        {"name": "smartwatch", "brand": "Samsung", "price": 10000, "image": "msala.jpg"},
+    ]
+    return render(request, 'shoppinglist.html', {'shopping_list': shopping})

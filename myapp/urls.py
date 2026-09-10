@@ -60,6 +60,8 @@ path('testimg/', views.testimg),
 
 path('products/', views.productlist),
 
+path('shoppinglist/', views.shoppinglist),
+
 
 
 
