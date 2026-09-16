@@ -1,11 +1,65 @@
 {% extends 'base.html' %}
-{% block title %}Food page{% endblock %}
+
+{% load static %}
+
+{% block title %}
+Food Page
+{% endblock %}
+
+
 {% block css %}
-p{
-    color: red;
-}
-{% endblock%}
+
+<style>
+    p {
+        color: red;
+    }
+
+    .food-container {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .food-card {
+        width: 180px;
+        padding: 15px;
+        border: 2px solid black;
+        text-align: center;
+    }
+
+    .food-card img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+    }
+</style>
+
+{% endblock %}
+
+
 {% block content %}
-<p> this is the food page </p>
+
+<h1>This is the food page</h1>
+
+<div class="food-container">
+
+    {% for item in menu_items %}
+
+        <div class="food-card">
+
+            <img src="{% static item.image %}"
+                 alt="{{ item.name }}">
+
+            <h3>{{ item.name }}</h3>
+
+            <p>Price: ₹{{ item.price }}</p>
+
+            <p>Size: {{ item.size }}</p>
+
+        </div>
+
+    {% endfor %}
+
+</div>
 
 {% endblock %}

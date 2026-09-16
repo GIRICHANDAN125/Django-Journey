@@ -419,13 +419,23 @@ def shoppinglist1(request, shoppingitem):
 
 
 
-# header base and base and home and about and food  are connected tom these 
-
-
+# header and footer template
 
 def home(request):
     return render(request, 'home.html')
+
+
 def about(request):
     return render(request, 'about.html')
+
 def food(request):
-    return render(request, 'food.html')
+
+    newmenu = [
+        {"name": "Pizza","price": 200, "size": "medium","image": "masala.jpg"},
+        {"name": "Burger","price": 150,"size": "large","image": "eye.jpg"},
+        {"name": "Pasta","price": 250,"size": "small","image": "cam.jpg"},
+        {"name": "Salad","price": 100,"size": "medium","image": "laptopimage.jpg"},
+        {"name": "Sushi","price": 0,"size": "large","image": "smartphone.jpg"},
+    ]
+
+    return render(request,'food.html', {'menu_items': newmenu})

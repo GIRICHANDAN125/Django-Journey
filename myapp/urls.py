@@ -70,7 +70,7 @@ path(
 # templates for inheritance
 path('home/', views.home, name='home'),
 path('about/', views.about, name='about'),
-path('food/', views.food, name='food'),
+path('food/', views.food, name='food' ),
 
 
 ]
