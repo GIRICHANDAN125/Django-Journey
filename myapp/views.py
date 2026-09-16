@@ -414,3 +414,18 @@ def shoppinglist1(request, shoppingitem):
         'shoppingdetails.html',
         {'item_details': item}
     )
+
+
+
+
+
+# header base and base and home and about and food  are connected tom these 
+
+
+
+def home(request):
+    return render(request, 'home.html')
+def about(request):
+    return render(request, 'about.html')
+def food(request):
+    return render(request, 'food.html')
