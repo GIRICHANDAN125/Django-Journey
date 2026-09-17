@@ -439,3 +439,15 @@ def food(request):
     ]
 
     return render(request,'food.html', {'menu_items': newmenu})
+
+
+
+# testing css 
+
+def testcss(request):
+    return render(request, 'testcss.html')
+
+
+ 
+
+

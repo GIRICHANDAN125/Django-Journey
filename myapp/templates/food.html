@@ -3,35 +3,191 @@
 {% load static %}
 
 {% block title %}
-Food Page
+Food Menu
 {% endblock %}
 
 
 {% block css %}
 
 <style>
-    p {
-        color: red;
+
+    /* =========================
+       FOOD PAGE
+       ========================= */
+
+    .food-page {
+        background: linear-gradient(135deg, #fff7ed, #ffe4e6);
+        min-height: 100vh;
+        padding: 40px 20px 60px;
     }
+
+
+    /* Heading */
+
+    .food-heading {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .food-heading h1 {
+        font-size: 42px;
+        margin: 0;
+        color: #222;
+        font-weight: 700;
+    }
+
+    .food-heading p {
+        color: #777;
+        font-size: 17px;
+        margin-top: 10px;
+    }
+
+
+    /* Food cards container */
 
     .food-container {
-        display: flex;
-        gap: 20px;
-        flex-wrap: wrap;
+        max-width: 1200px;
+        margin: auto;
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(auto-fit, minmax(220px, 1fr));
+
+        gap: 30px;
     }
+
+
+    /* Card */
 
     .food-card {
-        width: 180px;
-        padding: 15px;
-        border: 2px solid black;
+        background: white;
+
+        border-radius: 20px;
+
+        padding: 18px;
+
         text-align: center;
+
+        box-shadow:
+            0 10px 30px rgba(0, 0, 0, 0.10);
+
+        transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
+
+        overflow: hidden;
     }
 
-    .food-card img {
-        width: 150px;
-        height: 150px;
-        object-fit: cover;
+
+    /* Hover */
+
+    .food-card:hover {
+        transform: translateY(-12px);
+
+        box-shadow:
+            0 18px 40px rgba(0, 0, 0, 0.18);
     }
+
+
+    /* Image */
+
+    .food-image {
+        width: 100%;
+        height: 200px;
+
+        object-fit: cover;
+
+        border-radius: 15px;
+
+        transition: transform 0.4s ease;
+    }
+
+
+    .food-card:hover .food-image {
+        transform: scale(1.05);
+    }
+
+
+    /* Food name */
+
+    .food-card h3 {
+        font-size: 24px;
+
+        margin:
+            18px 0 10px;
+
+        color: #222;
+    }
+
+
+    /* Price */
+
+    .price {
+        color: #e63946;
+
+        font-size: 19px;
+
+        font-weight: bold;
+
+        margin: 8px 0;
+    }
+
+
+    /* Size */
+
+    .size {
+        color: #777;
+
+        font-size: 15px;
+
+        margin-bottom: 15px;
+    }
+
+
+    /* Size badge */
+
+    .size span {
+        background: #fff0f1;
+
+        color: #e63946;
+
+        padding: 5px 12px;
+
+        border-radius: 20px;
+
+        font-weight: 600;
+    }
+
+
+    /* Button */
+
+    .order-btn {
+        display: inline-block;
+
+        text-decoration: none;
+
+        background: #e63946;
+
+        color: white;
+
+        padding: 10px 20px;
+
+        border-radius: 25px;
+
+        font-weight: bold;
+
+        transition: 0.3s;
+    }
+
+
+    .order-btn:hover {
+        background: #c1121f;
+
+        transform: scale(1.05);
+    }
+
+
 </style>
 
 {% endblock %}
@@ -39,27 +195,79 @@ Food Page
 
 {% block content %}
 
-<h1>This is the food page</h1>
+<div class="food-page">
 
-<div class="food-container">
 
-    {% for item in menu_items %}
+    <!-- Heading -->
+
+    <div class="food-heading">
+
+        <h1>🍽️ Our Delicious Menu</h1>
+
+        <p>
+            Freshly prepared dishes made with love ❤️
+        </p>
+
+    </div>
+
+
+
+    <!-- Food Cards -->
+
+    <div class="food-container">
+
+        {% for item in menu_items %}
 
         <div class="food-card">
 
-            <img src="{% static item.image %}"
-                 alt="{{ item.name }}">
 
-            <h3>{{ item.name }}</h3>
+            <!-- Food Image -->
 
-            <p>Price: ₹{{ item.price }}</p>
+            <img
+                class="food-image"
+                src="{% static item.image %}"
+                alt="{{ item.name }}"
+            >
 
-            <p>Size: {{ item.size }}</p>
+
+            <!-- Food Name -->
+
+            <h3>
+                {{ item.name }}
+            </h3>
+
+
+            <!-- Price -->
+
+            <p class="price">
+                ₹{{ item.price }}
+            </p>
+
+
+            <!-- Size -->
+
+            <p class="size">
+                Size:
+                <span>
+                    {{ item.size }}
+                </span>
+            </p>
+
+
+            <!-- Button -->
+
+            <a href="#" class="order-btn">
+                Order Now
+            </a>
+
 
         </div>
 
-    {% endfor %}
+        {% endfor %}
+
+    </div>
 
 </div>
 
 {% endblock %}
+

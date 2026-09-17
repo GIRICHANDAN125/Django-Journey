@@ -73,6 +73,10 @@ path('about/', views.about, name='about'),
 path('food/', views.food, name='food' ),
 
 
+
+path('htmlcss/', views.testcss),
+
+
 ]
 
 # template for menu.html

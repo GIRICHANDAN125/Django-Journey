@@ -1,0 +1,9 @@
+h1{
+    color: rgb(150, 150, 210);
+    background-color: lightgray;
+}
+img{
+    width: 300px;
+    height: 300px;
+    border: 20px dotted rgb(93, 139, 93);
+}
