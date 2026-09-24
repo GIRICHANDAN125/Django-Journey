@@ -12,8 +12,13 @@ class URLTests(TestCase):
     def test_sampletest_negativeurl(self):
         response = self.client.get('/newsampletest/')
         self.assertEqual(response.status_code, 404)
+    def test_sampletest_urlname(self):
+        url =reverse('st')
+        response =self.client.get(url)
+        self.assertEqual(response.status_code,200)
 
 
+        
 
 
         

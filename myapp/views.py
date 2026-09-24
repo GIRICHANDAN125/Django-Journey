@@ -499,7 +499,10 @@ def sampletest(request):
 
 
 
+def sampletest1(request,id):
+    return  HttpResponse(f"the id is{id}")
 
+    
 
 
 
