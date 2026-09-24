@@ -39,6 +39,7 @@ re_path(r'^archive/(?P<year>[0-9]{4})/(?P<month>[0-9]{2})/(?P<day>[0-9]{2})$',vi
 #  you hace chosen subcategory:nnod specitef
 
 
+# template for menu.html
     re_path(
         r'^menu/(?P<category>[a-zA-Z0-9 ]+)(?:/(?P<subcategory>[a-zA-Z0-9 ]+))?/$',
         views.menu
@@ -70,15 +71,14 @@ path(
 # templates for inheritance
 path('home/', views.home, name='home'),
 path('about/', views.about, name='about'),
-path('food/', views.food, name='food' ),
-
-
 
 path('htmlcss/', views.testcss),
 
 path('items/', views.items),
 path('items/<str:name>/', views.itemsdetails, name='itemsdetails'),
 
+path("resturent/", views.restaurant, name="restaurant"),
+re_path( r"^resturent/items/(?P<item_id>\d{3})/$", views.item_detail,name="item_detail"),
 
 
 
@@ -86,7 +86,8 @@ path('items/<str:name>/', views.itemsdetails, name='itemsdetails'),
 
 
 
-
+#testing in django
+ path('sampletest/', views.sampletest),
 
 
 
@@ -99,4 +100,4 @@ path('items/<str:name>/', views.itemsdetails, name='itemsdetails'),
 
 ]
 
-# template for menu.html
+

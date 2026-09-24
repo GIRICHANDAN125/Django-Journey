@@ -46,18 +46,6 @@ def food(request):
         itemcontain += f"<p>{item}</p>"
     return HttpResponse(itemcontain)
 
-fooddetails = {
-    "name": "Pizza",
-    "price": 200,
-    "size":"reqular",
-    "topping":"olive"
-}
-
-print(fooddetails.items())
-for key, value in fooddetails.items():
-    print(f"{key}: {value}")
-    
-    
 
 def studentdetails(request):
     student = [
@@ -116,37 +104,6 @@ def studentinfo(request):
     content += "</table>"
     return HttpResponse(content)
 
-
-
-def studentinfo(request):
-    student = [
-        {"Name": "navneet", "Marks": 67, "Course": "Django"},
-        {"Name": "sachin", "Marks": 89, "Course": "Python"},
-        {"Name": "rahul", "Marks": 45, "Course": "Java"},
-        {"Name": "rohit", "Marks": 78, "Course": "C++"},
-        {"Name": "virat", "Marks": 90, "Course": "JavaScript"},
-    ]
-
-    content = '<table border="1"><tr>'
-
-    # Create table headings
-    for column in student[0].keys():
-        content += f"<th>{column}</th>"
-
-    content += "</tr>"
-
-    # Create table rows
-    for i in student:
-        content += "<tr>"
-
-        for value in i.values():
-            content += f"<td>{value}</td>"
-
-        content += "</tr>"
-
-    content += "</table>"
-
-    return HttpResponse(content)
 
 
 def studentdetails3(request):
@@ -313,7 +270,7 @@ def create_food_list():
 
 
 def fooddata(request):
-    return render(request, 'menu.html', {'newmenu': 'items', 'food_list': create_food_list()})
+    return render(request, 'menu.html', {'newmenu': create_food_list()})
 
 
 def menu1(request, item_name):
@@ -321,18 +278,6 @@ def menu1(request, item_name):
     return render(request, 'menu1.html', {'menu': menu, 'item_name': item_name})
 
 
-
-def menu(request, category, subcategory=None):
-    if subcategory:
-        return HttpResponse(
-            f"<h1>You have chosen category: {category}</h1>"
-            f"<h1>You have chosen subcategory: {subcategory}</h1>"
-        )
-    return HttpResponse(
-        f"<h1>You have chosen category: {category}</h1>"
-        f"<h1>You have chosen subcategory: Not specified</h1>"
-    )
-    
 
 def testimg(request):
     return render(request, 'testimg.html')
@@ -484,21 +429,72 @@ def itemsdetails(request,name):
 
 
 
+from django.shortcuts import render
 
 
-def resturent(request):
-    item = [
-        {'item_id':101,'name':'chapati', 'category':'1', 'price':70,'spci_level':'mild'},
-        {'item_id':102,'name':'chicken', 'category':'2', 'price':150,'spci_level':'mild'},
-        {'item_id':103,'name':'fish', 'category':'3', 'price':200,'spci_level':'spicy'},
-        {'item_id':104,'name':'mutton', 'category':'4', 'price':250,'spci_level':'spicy'},
-        {'item_id':105,'name':'rice', 'category':'5', 'price':100,'spci_level':'mild'},
-        {'item_id':106,'name':'salad', 'category':'6', 'price':50,'spci_level':'mild'},
+def restaurant(request):
+    items = [
+        { "item_id": 101,"name": "Paneer Tikka Masala","category": "Main Course","price": 240,"spicy_level": 3},
+        { "item_id": 102,"name": "Butter Chicken","category": "Main Course","price": 280,"spicy_level": 2},
+        { "item_id": 103,"name": "Veg Biryani","category": "Main Course","price": 200,"spicy_level": 1},
+        { "item_id": 104,"name": "Chicken Biryani","category": "Main Course","price": 300,"spicy_level": 2},
+        { "item_id": 105,"name": "Paneer Butter Masala","category": "Main Course","price": 260,"spicy_level": 2},
+        { "item_id": 106,"name": "Chole Bhature","category": "Main Course","price": 180,"spicy_level": 3},
+        { "item_id": 107,"name": "Aloo Paratha","category": "Main Course","price": 150,"spicy_level": 1},
+        { "item_id": 108,"name": "Masala Dosa","category": "Main Course","price": 120,"spicy_level": 2},
+        { "item_id": 109,"name": "Idli Sambar","category": "Main Course","price": 100,"spicy_level": 1},
+        { "item_id": 110,"name": "Vada Pav","category": "Snacks","price": 80,"spicy_level": 3}
     ]
 
-    return render(request, 'resturent.html', {'items': item})
+    return render(request, "resturent.html", {"items": items})
 
-    
+
+   
+
+
+
+
+
+
+# test cmnds 
+# python manage.py test myapp.tests.urltests.test_students_url
+
+
+
+def item_detail(request, item_id):
+    items = [
+        {"item_id": 101, "name": "Paneer Tikka Masala", "category": "Main Course", "price": 240, "spicy_level": 3},
+        {"item_id": 102, "name": "Butter Chicken", "category": "Main Course", "price": 280, "spicy_level": 2},
+        {"item_id": 103, "name": "Veg Biryani", "category": "Main Course", "price": 200, "spicy_level": 1},
+        {"item_id": 104, "name": "Chicken Biryani", "category": "Main Course", "price": 300, "spicy_level": 2},
+        {"item_id": 105, "name": "Paneer Butter Masala", "category": "Main Course", "price": 260, "spicy_level": 2},
+        {"item_id": 106, "name": "Chole Bhature", "category": "Main Course", "price": 180, "spicy_level": 3},
+        {"item_id": 107, "name": "Aloo Paratha", "category": "Main Course", "price": 150, "spicy_level": 1},
+        {"item_id": 108, "name": "Masala Dosa", "category": "Main Course", "price": 120, "spicy_level": 2},
+        {"item_id": 109, "name": "Idli Sambar", "category": "Main Course", "price": 100, "spicy_level": 1},
+        {"item_id": 110, "name": "Vada Pav", "category": "Snacks", "price": 80, "spicy_level": 3},
+    ]
+    item = next((entry for entry in items if entry["item_id"] == int(item_id)), None)
+    if item is None:
+        return HttpResponse("<h1>Item not found</h1>", status=404)
+    return render(request, "resturent.html", {"items": [item]})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def sampletest(request):
+    return HttpResponse("<h1>this is a simple test</h1>")
 
 
 

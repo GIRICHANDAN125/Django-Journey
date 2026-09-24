@@ -1,40 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Menu</title>
 </head>
 
 <body>
-    <h1>My Menu</h1>
+
+    <h1>Menu</h1>
+
     {% for item in items %}
-    <h1>itemid: {{ item.item_id }}</h1>
-    <h1>name: {{ item.name }}</h1>
-    <h1>category: {{ item.category }}</h1>
-    <h1>price: {{ item.price }}</h1>
-    <h1>spci_level: {{ item.spci_level }}</h1>
 
-    { %if spci_level >= 3 %}
-    message: "spicy"
-    {% else %}
-    message: "mild"
-    {% endif %}
+        <h2>{{ item.name }}</h2>
 
+        <p>Item ID: {{ item.item_id }}</p>
+        <p>Category: {{ item.category }}</p>
+        <p>Price: ₹{{ item.price }}</p>
+        <p>Spicy Level: {{ item.spicy_level }}</p>
 
+        {% if item.price < 200 %}
+            <p>Price Category: Low</p>
+        {% else %}
+            <p>Price Category: High</p>
+        {% endif %}
+
+        {% if item.spicy_level >= 3 %}
+            <p>Spicy</p>
+        {% else %}
+            <p>Mild</p>
+        {% endif %}
+
+        <hr>
 
     {% endfor %}
 
-    {% if itemsid in item %}
-    message:"enjoy u r meal{item.itemid}"
-    {%else%}
-    message : invalid menu item id
-    {% end if %}
-
-
-
-
 </body>
-
 </html>
