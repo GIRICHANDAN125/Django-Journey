@@ -451,3 +451,81 @@ def testcss(request):
  
 
 
+
+def items(request):
+    items = [
+        {"name": "laptop"},{"name": "smartphone"},
+        {"name": "headphones"},
+        {"name": "camera"},
+        {"name": "smartwatch"},
+    ]
+    
+
+    return render(request, 'items.html', {'items': items})
+
+
+
+def itemsdetails(request,name):
+    items = {
+
+        'laptop':{ "brand": "Apple", "price": 20000, "image": "smartphone.jpg"},
+        'smartphone':{ "brand": "Apple", "price": 20000, "image": "smartphone.jpg"},
+        'headphones':{ "brand": "Sony", "price": 3000, "image": "eye.jpg"},
+        'camera':{ "brand": "Canon", "price": 40000, "image": "cam.jpg"},
+        'smartwatch':{ "brand": "Samsung", "price": 10000, "image": "msala.jpg"},
+    }
+    item = items.get(name)
+    if item:
+        return render(request, 'itemsdetails.html', {'name': name,'brand': item['brand'], 'price': item['price'], 'image': item['image']})
+    else:
+        return render(request, 'itemsdetails.html', {'name': name, 'brand': None, 'price': None, 'image': None})
+
+
+
+
+
+
+
+def resturent(request):
+    item = [
+        {'item_id':101,'name':'chapati', 'category':'1', 'price':70,'spci_level':'mild'},
+        {'item_id':102,'name':'chicken', 'category':'2', 'price':150,'spci_level':'mild'},
+        {'item_id':103,'name':'fish', 'category':'3', 'price':200,'spci_level':'spicy'},
+        {'item_id':104,'name':'mutton', 'category':'4', 'price':250,'spci_level':'spicy'},
+        {'item_id':105,'name':'rice', 'category':'5', 'price':100,'spci_level':'mild'},
+        {'item_id':106,'name':'salad', 'category':'6', 'price':50,'spci_level':'mild'},
+    ]
+
+    return render(request, 'resturent.html', {'items': item})
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

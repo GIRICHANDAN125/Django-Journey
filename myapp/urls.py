@@ -76,6 +76,26 @@ path('food/', views.food, name='food' ),
 
 path('htmlcss/', views.testcss),
 
+path('items/', views.items),
+path('items/<str:name>/', views.itemsdetails, name='itemsdetails'),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ]
 

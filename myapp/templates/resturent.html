@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>My Menu</h1>
+    {% for item in items %}
+    <h1>itemid: {{ item.item_id }}</h1>
+    <h1>name: {{ item.name }}</h1>
+    <h1>category: {{ item.category }}</h1>
+    <h1>price: {{ item.price }}</h1>
+    <h1>spci_level: {{ item.spci_level }}</h1>
+
+    { %if spci_level >= 3 %}
+    message: "spicy"
+    {% else %}
+    message: "mild"
+    {% endif %}
+
+
+
+    {% endfor %}
+
+    {% if itemsid in item %}
+    message:"enjoy u r meal{item.itemid}"
+    {%else%}
+    message : invalid menu item id
+    {% end if %}
+
+
+
+
+</body>
+
+</html>
