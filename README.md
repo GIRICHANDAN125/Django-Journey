@@ -167,6 +167,6 @@ myproject/
 - Run migrations and save data in the database.
 - Use the Django admin panel.
 - Replace hard-coded product data with database queries.
-- Add forms and user input.
+- Add forms in ui and user input.
 - Improve validation and error handling.
 - Add tests for views and URLs.
