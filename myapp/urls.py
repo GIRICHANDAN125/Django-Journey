@@ -88,16 +88,18 @@ re_path( r"^resturent/items/(?P<item_id>\d{3})/$", views.item_detail,name="item_
 
 #testing in django
  path('sampletest/', views.sampletest),
+  path('sampletest1/<int:id>', views.sampletest1),
+
+path('old/',views.old),
+path('new/', views.new),
 
 
+path('form/', views.form_submission2, name='form'),
 
 
-
-
+path('form_submission2/', views.form_submission2, name='form_submission2'),
 
 
 
 
 ]
-
-

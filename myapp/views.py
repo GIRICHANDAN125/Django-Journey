@@ -22,6 +22,7 @@ def table(request):
     return HttpResponse(table)
 
 
+
 def marks(request):
     mark = 85
 
@@ -493,6 +494,7 @@ def item_detail(request, item_id):
 
 
 
+
 def sampletest(request):
     return HttpResponse("<h1>this is a simple test</h1>")
 
@@ -502,7 +504,13 @@ def sampletest(request):
 def sampletest1(request,id):
     return  HttpResponse(f"the id is{id}")
 
-    
+
+def new(request):
+    return HttpResponse("content")
+
+
+def old(request):
+    return redirect('/new/')
 
 
 
@@ -518,6 +526,17 @@ def sampletest1(request,id):
 
 
 
+
+
+from  .forms import InputForm2
+def form_submission2(request):
+    submitted_details = None
+    if request.method == 'POST':
+        form = InputForm2(request.POST, request.FILES)
+        if form.is_valid():
+            submitted_details = form.cleaned_data
+    form = InputForm2()
+    return render(request, 'InputForm2.html', {'form':form, 'submitted_details':submitted_details})
 
 
 

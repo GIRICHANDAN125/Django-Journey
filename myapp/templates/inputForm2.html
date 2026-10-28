@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .errorlist{
+            color:brown
+        }
+    </style>
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_div }}
+        <input type="submit" value="submit">
+        {% if submitted_details %}
+        <h2> the submited details are: </h2>
+        {% for key,value in submitted_details.items %}
+        <p>{{key}}:{{value}}</p>
+        {% endfor %}
+        {% endif %}
+
+    </form>
+    
+</body>
+</html>
