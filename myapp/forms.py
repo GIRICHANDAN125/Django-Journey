@@ -1,5 +1,6 @@
 #forms.py
 from django import forms
+
 class InputForm2(forms.Form):
     name = forms.CharField()
     email = forms.EmailField()
@@ -19,3 +20,10 @@ class InputForm2(forms.Form):
     website = forms.URLField(required=False)
     agree = forms.BooleanField(required=False)
 
+
+from .models import Blogpost
+
+class Blogpostform(forms.ModelForm):
+    class Meta:
+        model = Blogpost
+        fields = '__all__'

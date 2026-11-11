@@ -543,7 +543,71 @@ def form_submission2(request):
 
 
 
+from .forms import Blogpostform
+def insertBlogpost(request):
+    if request.method == 'POST':
+        form = Blogpostform(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponse("Blog post inserted successfully.")
+    else:
+        form = Blogpostform()
+    return render(request, 'insertblog.html', {'form': form})
 
 
 
 
+
+
+
+
+from .models import Blogpost
+def blogposts(request):
+    posts = Blogpost.objects.all()
+    return render(request, 'blogposts.html', {'posts': posts})
+
+    
+def set_cookie(request):
+    response = HttpResponse("Cookie has been set.")
+    response.set_cookie('email', 'ash@gmail.com', max_age=15)  # Cookie expires in 1 hour
+    response.set_cookie('username', 'ash', max_age=15)  # Cookie expires in 1 hour
+    return response
+
+def get_cookie(request):
+    value1 = request.COOKIES.get('email')
+    value2 = request.COOKIES.get('username')
+    if(value1 or value2):
+        return HttpResponse(f"Cookie values: email={value1}, username={value2}")
+    else:
+        return HttpResponse("No cookies found.")
+
+
+
+
+# crete three views names as cookieview1, cookieview2, cookieview3
+# that set the cookie names " last_page" to values "page1", "page2", "page3" respectively and 
+# also cretw a corresponding urls for the same . now create a view named lastvisitedpage and 
+# fetch the last visited page via cookie and also create a correso=pnding url for the samecls
+
+
+
+
+def cookieview1(request):
+    response = HttpResponse("Cookie 'last_page' has been set to 'page1'.")
+    response.set_cookie('last_page', 'page1', max_age=10)  # Cookie expires in 1 hour
+    return response
+def cookieview2(request):
+    response = HttpResponse("Cookie 'last_page' has been set to 'page2'.")
+    response.set_cookie('last_page', 'page2', max_age=10)  # Cookie expires in 1 hour
+    return response
+def cookieview3(request):
+    response = HttpResponse("Cookie 'last_page' has been set to 'page3'.")
+    response.set_cookie('last_page', 'page3', max_age=10)  # Cookie expires in 1 hour
+    return response
+
+def lastvisitedpage(request):
+    last_page = request.COOKIES.get('last_page')
+    if last_page:
+        return HttpResponse(f"Last visited page: {last_page}")
+    else:
+        return HttpResponse("No last visited page found.")

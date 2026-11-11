@@ -1,5 +1,7 @@
 from django.urls import path,re_path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('welcome/', views.welcome),
@@ -98,8 +100,33 @@ path('form/', views.form_submission2, name='form'),
 
 
 path('form_submission2/', views.form_submission2, name='form_submission2'),
+path('insertblog/', views.insertBlogpost, name='insertblog'),
 
 
 
 
-]
+path('set_cookie/', views.set_cookie, name='set_cookie'),
+path('get_cookie/', views.get_cookie, name='get_cookie'),
+
+
+path('cookie1/', views.cookieview1, name='cookieview1'),
+path('cookie2/', views.cookieview2, name='cookieview2'),
+path('cookie3/', views.cookieview3, name='cookieview3'),
+path('lastvisited/', views.lastvisitedpage, name='lastvisitedpage')
+
+
+
+
+
+
+
+
+
+
+
+
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+
+

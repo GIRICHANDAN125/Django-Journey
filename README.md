@@ -170,3 +170,27 @@ myproject/
 - Add forms in ui and user input.
 - Improve validation and error handling.
 - Add tests for views and URLs.
+
+## Creating a Book
+
+`Book.author` is a foreign key, so pass an existing `Author` object rather
+than a name string. All non-optional Book fields must also be supplied:
+
+```python
+from datetime import date
+from myapp.models import Author, Book
+
+author = Author.objects.get(name="abce")
+book = Book.objects.create(
+    title="hero",
+    author=author,
+    published_date=date(2003, 3, 24),
+    isbn="9780000000002",
+    pages=200,
+    cover_image="book_covers/hero.jpg",
+    language="English",
+)
+```
+
+Place the cover image at `MEDIA_ROOT/book_covers/hero.jpg` if the app needs to
+serve or display it.
