@@ -594,20 +594,42 @@ def get_cookie(request):
 
 def cookieview1(request):
     response = HttpResponse("Cookie 'last_page' has been set to 'page1'.")
-    response.set_cookie('last_page', 'page1', max_age=10)  # Cookie expires in 1 hour
+    response.set_cookie('last_page', 'page1', max_age=30)  # Cookie expires in 1 hour
     return response
 def cookieview2(request):
     response = HttpResponse("Cookie 'last_page' has been set to 'page2'.")
-    response.set_cookie('last_page', 'page2', max_age=10)  # Cookie expires in 1 hour
+    response.set_cookie('last_page', 'page2', max_age=30)  # Cookie expires in 1 hour
     return response
 def cookieview3(request):
     response = HttpResponse("Cookie 'last_page' has been set to 'page3'.")
-    response.set_cookie('last_page', 'page3', max_age=10)  # Cookie expires in 1 hour
+    response.set_cookie('last_page', 'page3', max_age=30)  # Cookie expires in 1 hour
     return response
 
 def lastvisitedpage(request):
     last_page = request.COOKIES.get('last_page')
-    if last_page:
-        return HttpResponse(f"Last visited page: {last_page}")
-    else:
-        return HttpResponse("No last visited page found.")
+    # if last_page:
+    #     return HttpResponse(f"Last visited page: {last_page}")
+    # else:
+    #     return HttpResponse("No last visited page found.")
+
+    return render(request, 'lastvisited.html', {'last_page': last_page})
+
+
+
+def login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        if username and email:
+            request.session['username'] = username
+            request.session['email'] = email
+            return redirect('dashboard')
+    return render(request, 'login.html')
+    
+
+def dashboard(request):
+    if 'username' not in request.session:
+        return redirect('login')
+    username = request.session.get('username')
+    email = request.session.get('email')
+    return render(request, 'dashboard.html', {'username': username, 'email': email})

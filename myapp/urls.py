@@ -112,8 +112,10 @@ path('get_cookie/', views.get_cookie, name='get_cookie'),
 path('cookie1/', views.cookieview1, name='cookieview1'),
 path('cookie2/', views.cookieview2, name='cookieview2'),
 path('cookie3/', views.cookieview3, name='cookieview3'),
-path('lastvisited/', views.lastvisitedpage, name='lastvisitedpage')
+path('lastvisited/', views.lastvisitedpage, name='lastvisitedpage'),
 
+path('login/', views.login, name='login'),
+path('dashboard/', views.dashboard, name='dashboard'),
 
 
 
